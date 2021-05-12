@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Book</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-container">
+  <form [formGroup]="addBookForm" (ngSubmit)="createBook()">
+    <ion-item>
+      <ion-label>Title:</ion-label>
+      <ion-input type="string" formControlName="title" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Image:</ion-label>
+      <ion-input type="file" accept="image/*" formControlName="image" id="image" (change)="cacheImage($event)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Author:</ion-label>
+      <ion-input type="string" formControlName="author" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Summary:</ion-label>
+      <ion-textarea formControlName="summary"></ion-textarea>
+    </ion-item>
+    <div  class="ion-float-right ion-margin-top">
+      <ion-button  type="submit">Submit</ion-button>
+      <ion-button  (click)="dismiss()" class="ion-margin-end">Dismiss</ion-button>
+    </div>
+  </form>
+</ion-content>

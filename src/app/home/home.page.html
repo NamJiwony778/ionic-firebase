@@ -1,20 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Ionic Firebase App
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="card-container">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Ionic Firebase App</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-button size="large" (click)="showModal()">Add Book</ion-button>
   </div>
-</ion-content>
+  
+    <ion-card *ngFor="let book of bookList | async">
+      <ion-card-header>
+        <img src="{{book.image}}" id="image"/>
+        <ion-card-title>{{book.title}}</ion-card-title>
+        <ion-card-subtitle>{{book.author}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{book.summary}}
+      </ion-card-content>
+      <div  class="ion-margin-bottom">
+        <ion-button  (click)="removeBook(book.id)">Delete</ion-button>
+        <ion-button  (click)="updateModal(book)">Update</ion-button>
+      </div>
+    </ion-card>
+  </ion-content>
